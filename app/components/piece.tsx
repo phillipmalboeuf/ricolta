@@ -11,7 +11,8 @@ import { Button } from '../components/button'
 
 interface Props {
   r: string,
-  k: string
+  k: string,
+  blank?: boolean
 }
 interface State {
   value: any
@@ -54,6 +55,15 @@ export class P extends React.Component<Props, State> {
         {Parser(context.pieces[this.props.r][this.props.k])}
       </span>
       : Parser(context.pieces[this.props.r][this.props.k])}
+    </PiecesContext.Consumer>
+  }
+}
+
+export class A extends P {
+
+  public render() {
+    return <PiecesContext.Consumer>
+      {(context) => <a href={context.pieces[this.props.r][this.props.k]} target={this.props.blank ? '_blank' : undefined}>{this.props.children}</a>}
     </PiecesContext.Consumer>
   }
 }

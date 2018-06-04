@@ -115,11 +115,11 @@
   .col {
 
     &.col--rotate {
-      position: relative;
+      writing-mode: vertical-rl;
       transform-origin: 50% 50%;
-      transform: rotate(-90deg) translate(-50%, 50%);
+      transform: rotate(180deg) translate(-25%, 5%);
 
-      white-space: nowrap;
+      // white-space: nowrap;
     }
 
     &.col--middle {

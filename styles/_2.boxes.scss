@@ -12,14 +12,14 @@
     @extend .grid;
     @extend .grid--middle;
 
-    height: 53.333vh;
+    min-height: 53.333vh;
     width: 33.333vw;
 
     background: $beige;
     border: $gutter solid $white;
 
     &.box--full {
-      height: 100vh;
+      min-height: 100vh;
       width: 100vw;
     }
   }

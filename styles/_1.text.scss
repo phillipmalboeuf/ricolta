@@ -5,6 +5,14 @@ html {
   font: #{$base_size}/#{$rythm*1.66} $body_font;
   font-weight: 400;
   font-variant-ligatures: none;
+
+  @media #{$tablet_portrait} {
+    font-size: 12px;
+  }
+
+  @media #{$phone} {
+    font-size: 10px;
+  }
 }
 
 body {
@@ -195,12 +203,14 @@ sub {
 .paragraph_big {
   font-size: (37/$base) * 1rem;
   line-height: (58/$base) * 1rem;
+  font-weight: 500;
   letter-spacing: 0.09em;
 }
 
 .paragraph_medium {
   font-size: (21/$base) * 1rem;
   line-height: (27/$base) * 1rem;
+  font-weight: 500;
   letter-spacing: 0.09em;
 }
 
@@ -260,8 +270,8 @@ sub {
 // #MISC
 
 .icon {
-  height: $base_size;
-  width: $base_size;
+  height: $base_size*1.66;
+  width: $base_size*1.66;
   display: inline-block;
   fill: currentColor;
   vertical-align: bottom;

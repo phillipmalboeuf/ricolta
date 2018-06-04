@@ -1,7 +1,6 @@
 
 const Parser = require('html-react-parser')
 import * as React from 'react'
-import * as cookies from 'browser-cookies'
 
 import { PiecesContext } from '../contexts/pieces'
 
@@ -50,11 +49,7 @@ export class P extends React.Component<Props, State> {
 
   public render() {
     return <PiecesContext.Consumer>
-      {(context) => cookies.get('Session-Id')
-      ? <span contentEditable suppressContentEditableWarning onInput={this.onInput.bind(this)}>
-        {Parser(context.pieces[this.props.r][this.props.k])}
-      </span>
-      : Parser(context.pieces[this.props.r][this.props.k])}
+      {(context) => Parser(context.pieces[this.props.r][this.props.k])}
     </PiecesContext.Consumer>
   }
 }

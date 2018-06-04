@@ -1,4 +1,6 @@
 
+import axios from 'axios'
+
 
 export default class Model {
 
@@ -13,18 +15,20 @@ export default class Model {
   }
 
   protected static request(method: string, endpoint: string, data?: any) {
-    return fetch(`http://localhost:8089/${this.endpoint}${endpoint}`, {
-      method: method,
-      credentials: 'include',
+    return axios({
+      method,
+      url: `http://localhost:8089/${this.endpoint}${endpoint}`,
+      withCredentials: true,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
+      responseType: 'json',
       body: data ? JSON.stringify(data) : undefined
-    }).then(response => response.json().then(json => ({
-      ...json,
-      language: response.headers.get('Content-Language')
-    })))
+    }).then(response => ({
+      ...response.data,
+      language: response.headers['content-language']
+    }))
       
   }
 

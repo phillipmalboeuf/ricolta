@@ -1,7 +1,6 @@
 
 import * as React from 'react'
 import { Link, RouteComponentProps, Redirect } from 'react-router-dom'
-import * as cookies from 'browser-cookies'
 
 import { Button } from '../components/button'
 import { Icon } from '../components/icon'
@@ -87,6 +86,6 @@ export class Index extends React.Component<Props, State> {
           </div>
         </div>
       </div>
-    </div>)
+    </div>
   }
 }

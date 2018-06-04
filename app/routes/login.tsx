@@ -6,7 +6,6 @@ import { Button } from '../components/button'
 import { Form } from '../components/form'
 import { Input } from '../components/input'
 
-import People from '../models/people'
 import Session from '../models/session'
 
 

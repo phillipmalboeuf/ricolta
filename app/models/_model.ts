@@ -17,7 +17,7 @@ export default class Model {
   protected static request(method: string, endpoint: string, data?: any) {
     return axios({
       method,
-      url: `http://localhost:8089/${this.endpoint}${endpoint}`,
+      url: `https://ricoltaserver.votre.best/${this.endpoint}${endpoint}`,
       withCredentials: true,
       headers: {
         'Accept': 'application/json',

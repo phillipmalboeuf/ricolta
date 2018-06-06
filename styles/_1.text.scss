@@ -216,6 +216,7 @@ sub {
 
 .info_big {
   font-size: (35/$base) * 1rem;
+  font-weight: 600;
   text-transform: uppercase;
   line-height: (44/$base) * 1rem;
   letter-spacing: 0.49em;
@@ -223,7 +224,7 @@ sub {
 
 .info_medium {
   font-size: (24/$base) * 1rem;
-  font-weight: bold;
+  font-weight: 600;
   text-transform: uppercase;
   line-height: (30/$base) * 1rem;
   letter-spacing: 0.1em;

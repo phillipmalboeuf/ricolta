@@ -13,6 +13,7 @@ import Piece from '../app/models/piece'
 const server = express()
 
 server.use(compression())
+server.use('/files', express.static(`${__dirname}`))
 server.use('/dist', express.static(`${__dirname}`))
 
 server.get('/*', (req, res) => {

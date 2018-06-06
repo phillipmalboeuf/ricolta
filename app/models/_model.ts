@@ -1,7 +1,6 @@
 
 import axios from 'axios'
 
-
 export default class Model {
 
   static endpoint: string = 'models'
@@ -17,7 +16,7 @@ export default class Model {
   protected static request(method: string, endpoint: string, data?: any) {
     return axios({
       method,
-      url: `https://ricoltaserver.votre.best/${this.endpoint}${endpoint}`,
+      url: `${process.env.NODE_ENV === 'production' ? 'https://ricoltaserver.votre.best' : '//localhost:8089'}/${this.endpoint}${endpoint}`,
       withCredentials: true,
       headers: {
         'Accept': 'application/json',

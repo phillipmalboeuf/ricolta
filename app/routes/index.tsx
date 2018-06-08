@@ -2,6 +2,8 @@
 import * as React from 'react'
 import { Link, RouteComponentProps, Redirect } from 'react-router-dom'
 
+import { PiecesContext } from '../contexts/pieces'
+
 import { Button } from '../components/button'
 import { Icon } from '../components/icon'
 import { P, A } from '../components/piece'
@@ -24,12 +26,15 @@ export class Index extends React.Component<Props, State> {
   public render() {
     return <div className='boxes'>
       <div className='box box--full'>
-        {/*<div className='box__top_right'>
-          <a className='paragraph_medium' onClick={()=> cookies.set('locale', this.state.pieces.language == 'en' ? 'fr_CA' : 'en_CA')}
-            href={`${this.state.pieces.language == 'en' ? '/' : '/en'}${window.location.pathname.replace('/', '').replace(this.props.match.params.language, '')}`}>
-            {this.state.pieces.language == 'en' ? 'Français' : 'English'}
-          </a>
-        </div>*/}
+        <div className="box__top_right">
+          <PiecesContext.Consumer>
+            {(context) =>
+            <a href='/' className='button--transparent paragraph_medium' onClick={()=> document.cookie = `locale=${context.pieces.language === 'en' ? 'fr_CA' : 'en_CA'}`}>
+              <P r='index' k='other_language' />
+            </a>
+            }
+          </PiecesContext.Consumer>
+        </div>
         <div className='grid grid--guttered grid--center'>
           <div className='col col--2of12 col--tablet_landscape--3of12 col--rotate hide_on_tablet_portrait'>
             <h1 className='header_giant'><P r='index' k='title' /></h1>

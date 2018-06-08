@@ -12,25 +12,29 @@ import Piece from './models/piece'
 import User from './models/user'
 
 
-Promise.all([
-  Piece.list()
-]).then(([pieces, user])=> {
-  const element = document.getElementById('app')
-  const app = (
+
+if (process.env.NODE_ENV === 'production') {
+  ReactDOM.hydrate(
+    <PiecesContext.Provider value={{
+      pieces: window.pieces
+    }}>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </PiecesContext.Provider>,
+    document.getElementById('app'))
+} else {
+  Promise.all([
+    Piece.list()
+  ]).then(([pieces, user])=> ReactDOM.render(
     <PiecesContext.Provider value={{
       pieces
     }}>
       <BrowserRouter>
         <Routes />
       </BrowserRouter>
-    </PiecesContext.Provider>
-  )
-
-  if (process.env.NODE_ENV === 'production') {
-    ReactDOM.hydrate(app, element)
-  } else {
-    ReactDOM.render(app, element)
-  }
-})
+    </PiecesContext.Provider>,
+    document.getElementById('app')))
+}
 
   

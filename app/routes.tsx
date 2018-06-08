@@ -9,5 +9,5 @@ export const Routes = ()=> <Switch>
   <Route exact path='/login' component={Login} />
   <Redirect from='/sessions/:_id' to='/' />
 
-  <Route exact path='/:language?' component={Index} />
+  <Route exact path='/' component={Index} />
 </Switch>

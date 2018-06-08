@@ -1,6 +1,8 @@
 
 const compression = require('compression')
 const express = require('express')
+const cookieparser = require('cookie-parser')
+import createLocaleMiddleware from 'express-locale'
 
 import * as ReactDOM from 'react-dom/server'
 import * as React from 'react'
@@ -12,12 +14,18 @@ import Piece from '../app/models/piece'
 
 const server = express()
 
+server.use(cookieparser())
 server.use(compression())
+server.use(createLocaleMiddleware({
+  'priority': ['cookie', 'accept-language', 'default'],
+  'default': 'fr_CA'
+}))
+
 server.use('/files', express.static(`${__dirname}`))
 server.use('/dist', express.static(`${__dirname}`))
 
-server.get('/*', (req, res) => {
-  Piece.list().then(pieces =>
+server.get('/', (req, res) => {
+  Piece.list(req.locale.toString()).then(pieces =>
     res.send(ReactDOM.renderToString(
       <PiecesContext.Provider value={{
           pieces
@@ -36,6 +44,7 @@ server.get('/*', (req, res) => {
             </StaticRouter>
           </section>
           
+          <script dangerouslySetInnerHTML={{ __html: `window.pieces = ${JSON.stringify(pieces)}` }} />
           <script src='/dist/app.js'></script>
         </body>
         </html>

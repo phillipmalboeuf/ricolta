@@ -11,7 +11,8 @@ import { Button } from '../components/button'
 interface Props {
   r: string,
   k: string,
-  blank?: boolean
+  blank?: boolean,
+  className?: string
 }
 interface State {
   value: any
@@ -58,7 +59,7 @@ export class A extends P {
 
   public render() {
     return <PiecesContext.Consumer>
-      {(context) => <a href={context.pieces[this.props.r][this.props.k]} target={this.props.blank ? '_blank' : undefined}>{this.props.children}</a>}
+      {(context) => <a href={context.pieces[this.props.r][this.props.k]} className={this.props.className} target={this.props.blank ? '_blank' : undefined}>{this.props.children}</a>}
     </PiecesContext.Consumer>
   }
 }

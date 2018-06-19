@@ -82,13 +82,13 @@ export class Index extends React.Component<Props, State> {
             </a>
           </div>
 
-          <div className='col col--1of12 text_right hide_on_phone'>
+          {/* <div className='col col--1of12 text_right hide_on_phone'>
             <A r='index' k='facebook' blank><Icon i='facebook' /></A>
             <div className='medium_bottom' />
             <A r='index' k='instagram' blank><Icon i='instagram' /></A>
             <div className='medium_bottom' />
             <A r='index' k='mail' blank><Icon i='mail' /></A>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

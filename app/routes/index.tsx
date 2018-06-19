@@ -76,10 +76,10 @@ export class Index extends React.Component<Props, State> {
           </div>
 
           <div className='col col--1of12 col--rotate hide_on_tablet_portrait'>
-            <a href='' className='info_medium'>
+            <A r='index' k='address_link' blank className='info_medium'> 
               <small className='info_small'><P r='index' k='address_more' /></small><br />
               <P r='index' k='address' />
-            </a>
+            </A>
           </div>
 
           {/* <div className='col col--1of12 text_right hide_on_phone'>

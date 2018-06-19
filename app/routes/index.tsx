@@ -40,15 +40,15 @@ export class Index extends React.Component<Props, State> {
             <h1 className='header_giant'><P r='index' k='title' /></h1>
           </div>
 
-          <div className='col col--6of12 col--tablet_landscape--7of12 col--tablet_portrait--9of12 col--phone--10of12'>
+          <div className='col col--6of12 col--tablet_landscape--7of12 col--tablet_portrait--9of12 col--phone--11of12'>
             <div className='grid grid--guttered'>
               <div className='col col--4of12 col--tablet_portrait--5of12'>
                 <h3 className='info_big'><P r='index' k='city' /></h3>
               </div>
-              <div className='col col--4of12 text_center'>
+              <div className='col col--4of12 col--phone--5of12 text_center'>
                 <h4 className='header_medium'><P r='index' k='hours' /></h4>
               </div>
-              <div className='col col--3of12'>
+              <div className='col col--3of12 col--phone--2of12'>
                 <h4 className='info_small text_right'><P r='index' k='days' /></h4>
               </div>
               

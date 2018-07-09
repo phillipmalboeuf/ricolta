@@ -2,17 +2,25 @@
 import * as React from 'react'
 import { Link, RouteComponentProps, Redirect } from 'react-router-dom'
 
-import { PiecesContext } from '../contexts/pieces'
+import { context } from '../context'
 
 import { Button } from '../components/button'
 import { Icon } from '../components/icon'
 import { P, A } from '../components/piece'
 
-import Piece from '../models/piece'
 
-interface Props extends RouteComponentProps<any> {}
+interface Props extends RouteComponentProps<any> {
+  context?: {
+    pieces: {
+      _id: string,
+      [key:string]: any  
+    }
+  }
+}
 interface State {}
 
+
+@context
 export class Index extends React.Component<Props, State> {
 
   constructor(props: Props) {
@@ -27,13 +35,9 @@ export class Index extends React.Component<Props, State> {
     return <div className='boxes'>
       <div className='box box--full'>
         <div className="box__top_right">
-          <PiecesContext.Consumer>
-            {(context) =>
-            <a href='/' className='button--transparent paragraph_medium' onClick={()=> document.cookie = `locale=${context.pieces.language === 'en' ? 'fr_CA' : 'en_CA'}`}>
-              <P r='index' k='other_language' />
-            </a>
-            }
-          </PiecesContext.Consumer>
+          <a href='/' className='button--transparent paragraph_medium' onClick={()=> document.cookie = `locale=${this.props.context.pieces.locale === 'en_CA' ? 'fr_CA' : 'en_CA'}`}>
+            <P r='index' k='other_language' />
+          </a>
         </div>
         <div className='grid grid--guttered grid--center'>
           <div className='col col--2of12 col--tablet_landscape--3of12 col--rotate hide_on_tablet_portrait'>

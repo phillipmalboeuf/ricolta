@@ -1,60 +1,83 @@
 
-const compression = require('compression')
-const express = require('express')
-const cookieparser = require('cookie-parser')
+import express, { Application, Request, Response } from 'express'
+import cors from 'cors'
+import compression from 'compression'
+import morgan from 'morgan'
+import * as bodyparser from 'body-parser'
+import cookieparser from 'cookie-parser'
 import createLocaleMiddleware from 'express-locale'
+
 
 import * as ReactDOM from 'react-dom/server'
 import * as React from 'react'
-import { StaticRouter } from 'react-router-dom'
+
+import { CONF } from '../config'
 
 import { Routes } from '../app/routes'
-import { PiecesContext } from '../app/contexts/pieces'
-import Piece from '../app/models/piece'
+import { HTML } from '../app/components/html'
+import { sendError } from './helpers/errors'
 
-const server = express()
+import User from './models/user'
+import Session from './models/session'
+import Piece from './models/piece'
 
+
+
+interface Server extends Application {}
+
+export const server: Server = express()
+server.use(cors({origin: CONF('ORIGIN').split(','), credentials: true}))
+server.use(bodyparser.json())
 server.use(cookieparser())
 server.use(compression())
 server.use(createLocaleMiddleware({
   'priority': ['cookie', 'accept-language', 'default'],
   'default': 'fr_CA'
 }))
+server.use(morgan('dev'))
 
 server.use('/files', express.static(`${__dirname}`))
 server.use('/dist', express.static(`${__dirname}`))
 
-server.get('/', (req, res) => {
-  Piece.list(req.locale.toString()).then(pieces =>
-    res.send(ReactDOM.renderToString(
-      <PiecesContext.Provider value={{
-          pieces
-        }}>
-        <html>
-        <head>
-          <meta charSet='utf-8' />
-          <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-          <title>Ricolta</title>
-          <link rel='stylesheet' type='text/css' href='/dist/app.css' />
-        </head>
-        <body>
-          <section className='app' id='app'>
-            <StaticRouter location={req.originalUrl} context={{}}>
-              <Routes />
-            </StaticRouter>
-          </section>
-          
-          <script dangerouslySetInnerHTML={{ __html: `window.pieces = ${JSON.stringify(pieces)}` }} />
-          <script src='/dist/app.js'></script>
-        </body>
-        </html>
-      </PiecesContext.Provider>
-    ))
-  )
+const models = [
+  User,
+  Session,
+  Piece
+]
+
+models.forEach(model => {
+  model.endpoints().forEach(endpoint => server[endpoint.method.toLowerCase()](
+    `${endpoint.endpoint}`,
+    (req: Request, res: Response) => {
+      try {
+        endpoint.function(req)
+          .then((response: any)=> res.json(response))
+          .catch(error => sendError(res, error))
+      } catch (error) {
+        sendError(res, error)
+      }
+    }
+  ))
 })
 
+server.get('/*', (req: Request, res: Response) => {
+  Promise.all([
+    Piece.list({})
+  ]).then(([pieces, user])=> {
+    res.send(ReactDOM.renderToString(
+      <HTML pieces={pieces}>
+        <Routes />
+      </HTML>
+    ))
+  })
+})
 
-const port = process.env.PORT || 5000
+// server.use((req: Request, res: Response) => {
+//   res.header('Content-Language', req.locale.language)
+// })
+
+
+const port = CONF('SERVER_PORT')
 server.listen(port, () => {
   console.log(`Listening on port ${port}...`)
-});
+})

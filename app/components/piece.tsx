@@ -1,65 +1,50 @@
 
-const Parser = require('html-react-parser')
+import Parser from 'html-react-parser'
 import * as React from 'react'
 
-import { PiecesContext } from '../contexts/pieces'
-
+import { context } from '../context'
 import Piece from '../models/piece'
-import { Button } from '../components/button'
+
 
 
 interface Props {
   r: string,
   k: string,
   blank?: boolean,
-  className?: string
+  className?: string,
+  context?: {
+    pieces: {
+      _id: string,
+      [key:string]: any  
+    }
+  }
 }
 interface State {
-  value: any
+  piece?: Piece
 }
 
+@context
 export class P extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props)
     this.state = {
-      value: undefined
+      // piece: new Piece({_id: props.piece._id})
     }
   }
 
   componentDidMount() {
   }
 
-  onInput(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      value: e.currentTarget.innerHTML
-    })
-  }
-
-  // save() {
-  //   this.state.piece.save({
-  //     content: {
-  //       [this.props.k]: this.state.value
-  //     }
-  //   })
-  //     .then(piece => this.setState({ 
-  //       value: undefined,
-  //       piece: piece
-  //     }))
-  // }
-
   public render() {
-    return <PiecesContext.Consumer>
-      {(context) => Parser(context.pieces[this.props.r][this.props.k])}
-    </PiecesContext.Consumer>
+    return Parser(this.props.context.pieces[this.props.r][this.props.k])
   }
 }
 
+@context
 export class A extends P {
 
   public render() {
-    return <PiecesContext.Consumer>
-      {(context) => <a href={context.pieces[this.props.r][this.props.k]} className={this.props.className} target={this.props.blank ? '_blank' : undefined}>{this.props.children}</a>}
-    </PiecesContext.Consumer>
+    return <a href={this.props.context.pieces[this.props.r][this.props.k]} className={this.props.className} target={this.props.blank ? '_blank' : undefined}>{this.props.children}</a>
   }
 }

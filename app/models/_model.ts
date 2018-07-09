@@ -16,7 +16,7 @@ export default class Model {
   protected static request(method: string, endpoint: string, data?: any, locale?: string) {
     return axios({
       method,
-      url: `${process.env.NODE_ENV === 'production' ? 'https://ricoltaserver.votre.best' : '//localhost:8089'}/${this.endpoint}${endpoint}`,
+      url: `${process.env.NODE_ENV === 'production' ? '' : '//localhost:8089'}/${this.endpoint}${endpoint}`,
       withCredentials: true,
       headers: {
         'Accept': 'application/json',

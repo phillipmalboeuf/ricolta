@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
     "removeComments": true,
     "lib": [
       "es2017",

@@ -6,7 +6,7 @@ import { context } from '../context'
 
 import { Button } from '../components/button'
 import { Icon } from '../components/icon'
-import { P, A } from '../components/piece'
+import { P, A, Img } from '../components/piece'
 
 
 interface Props extends RouteComponentProps<any> {
@@ -34,12 +34,36 @@ export class Index extends React.Component<Props, State> {
   public render() {
     return <div className='boxes'>
       <div className='box box--full'>
-        <div className="box__top_right">
+        <div className='box__top_right' style={{zIndex: 3}}>
           <a href='/' className='button--transparent paragraph_medium' onClick={()=> document.cookie = `locale=${this.props.context.pieces.locale === 'en_CA' ? 'fr_CA' : 'en_CA'}`}>
             <P r='index' k='other_language' />
           </a>
         </div>
-        <div className='grid grid--guttered grid--center'>
+        <div className='grid box__top_left' style={{pointerEvents: 'none'}}>
+          <div className='col col--6of12' />
+          <div className='col col--3of12'><Img r='index' k='photo_1' /></div>
+          <div className='col col--3of12' />
+          <div className='col col--9of12' />
+          <div className='col col--3of12' style={{zIndex: 2}}><Img r='index' k='photo_2' /></div>
+          <div className='col col--6of12' style={{zIndex: 2}}><Img r='index' k='photo_3' /></div>
+          <div className='col col--6of12' />
+          <div className='col col--9of12' />
+          <div className='col col--3of12'><Img r='index' k='photo_4' /></div>
+          <div className='col col--3of12'><Img r='index' k='photo_5' /></div>
+          <div className='col col--9of12' />
+          <div className='col col--6of12' />
+          <div className='col col--6of12'><Img r='index' k='photo_6' /></div>
+          <div className='col col--3of12'><Img r='index' k='photo_7' /></div>
+          <div className='col col--9of12' />
+          <div className='col col--9of12' />
+          <div className='col col--3of12'><Img r='index' k='photo_8' /></div>
+          <div className='col col--3of12' />
+          <div className='col col--3of12'><Img r='index' k='photo_9' /></div>
+          <div className='col col--6of12' />
+          <div className='col col--6of12' />
+          <div className='col col--3of12'><Img r='index' k='photo_10' /></div>
+        </div>
+        <div className='grid grid--guttered grid--center' style={{zIndex: 1}}>
           <div className='col col--2of12 col--tablet_landscape--3of12 col--rotate hide_on_tablet_portrait'>
             <h1 className='header_giant'><P r='index' k='title' /></h1>
           </div>

@@ -48,3 +48,13 @@ export class A extends P {
     return <a href={this.props.context.pieces[this.props.r][this.props.k]} className={this.props.className} target={this.props.blank ? '_blank' : undefined}>{this.props.children}</a>
   }
 }
+
+@context
+export class Img extends P {
+
+  public render() {
+    return <picture>
+      <img src={`https://montrealuploads.imgix.net${this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress`} className={this.props.className} />
+    </picture>
+  }
+}

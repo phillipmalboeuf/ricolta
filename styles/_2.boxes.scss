@@ -5,6 +5,9 @@
 .boxes {
   @extend .grid;
   @extend .grid--stretch;
+
+  position: relative;
+  overflow: hidden;
 }
 
   .box {
@@ -28,6 +31,13 @@
       padding-bottom: $gutter*6;
     }
   }
+
+    .box__top_left {
+      position: absolute;
+      top: $gutter;
+      left: 0;
+      width: 100%;
+    }
 
     .box__top_right {
       position: absolute;

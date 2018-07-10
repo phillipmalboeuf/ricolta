@@ -23,12 +23,23 @@ interface State {}
 @context
 export class Index extends React.Component<Props, State> {
 
+  private photos: HTMLDivElement
+
   constructor(props: Props) {
     super(props)
     this.state = {}
   }
 
   componentDidMount() {
+    window.addEventListener('scroll', this.scroll.bind(this))
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('scroll', this.scroll.bind(this))
+  }
+
+  private scroll() {
+    this.photos.setAttribute('style', `transform: translateY(-${window.scrollY/3}px)`)
   }
 
   public render() {
@@ -39,7 +50,7 @@ export class Index extends React.Component<Props, State> {
             <P r='index' k='other_language' />
           </a>
         </div>
-        <div className='grid box__top_left' style={{pointerEvents: 'none'}}>
+        <div className='grid box__top_left' style={{pointerEvents: 'none'}} ref={element => this.photos = element}>
           <div className='col col--6of12' />
           <div className='col col--3of12'><Img r='index' k='photo_1' /></div>
           <div className='col col--3of12' />

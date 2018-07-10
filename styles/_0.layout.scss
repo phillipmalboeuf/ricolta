@@ -80,22 +80,22 @@ footer {
 }
 
 .padded {
-  padding: $rythm*2;
+  padding: $gutter*2;
 
   @media #{$tablet_portrait} {
-    padding: $rythm*2 $rythm;
+    padding: $gutter*2 $gutter;
   }
 
   @media #{$phone} {
-    padding: $rythm*1.5 $rythm/2;
+    padding: $gutter*1.5 $gutter/2;
   }
 
   &.padded--tight {
-    padding: $rythm/2;
+    padding: $gutter/2;
   }
 
   &.padded--big_top {
-    padding-top: $rythm*6;
+    padding-top: $gutter*6;
   }
 
   &.padded--flat_top {

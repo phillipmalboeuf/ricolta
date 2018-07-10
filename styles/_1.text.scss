@@ -169,15 +169,15 @@ sub {
 // #STYLES
 
 .header_giant {
-  font-size: (172/$base) * 1rem;
-  line-height: (160/$base) * 1rem;
+  font-size: (210/$base) * 1rem;
+  line-height: (200/$base) * 1rem;
   font-style: italic;
   font-weight: 500;
   letter-spacing: 0.04em;
 }
 
 .header_big {
-  font-size: (103/$base) * 1rem;
+  font-size: (100/$base) * 1rem;
   line-height: (90/$base) * 1rem;
   font-style: italic;
   font-weight: 500;
@@ -194,9 +194,9 @@ sub {
 
 .header_small {
   font-size: (25/$base) * 1rem;
-  line-height: (26/$base) * 1rem;
+  line-height: (40/$base) * 1rem;
   font-style: italic;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.045em;
 }
 
@@ -234,7 +234,7 @@ sub {
   font-size: (16/$base) * 1rem;
   font-weight: normal;
   text-transform: uppercase;
-  line-height: (20/$base) * 1rem;
+  line-height: (32/$base) * 1rem;
   letter-spacing: 0.11em;
 }
 
@@ -299,6 +299,7 @@ em strong {
 em,
 .em {
   font-style: italic;
+  text-decoration: underline;
 }
 
 .capitalize { text-transform: capitalize; }

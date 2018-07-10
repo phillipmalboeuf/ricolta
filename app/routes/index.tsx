@@ -44,7 +44,7 @@ export class Index extends React.Component<Props, State> {
           <div className='col col--3of12'><Img r='index' k='photo_1' /></div>
           <div className='col col--3of12' />
           <div className='col col--9of12' />
-          <div className='col col--3of12' style={{zIndex: 2}}><Img r='index' k='photo_2' /></div>
+          <div className='col col--3of12' style={{zIndex: 0}}><Img r='index' k='photo_2' /></div>
           <div className='col col--6of12' style={{zIndex: 2}}><Img r='index' k='photo_3' /></div>
           <div className='col col--6of12' />
           <div className='col col--9of12' />
@@ -63,60 +63,77 @@ export class Index extends React.Component<Props, State> {
           <div className='col col--6of12' />
           <div className='col col--3of12'><Img r='index' k='photo_10' /></div>
         </div>
-        <div className='grid grid--guttered grid--center' style={{zIndex: 1}}>
-          <div className='col col--2of12 col--tablet_landscape--3of12 col--rotate hide_on_tablet_portrait'>
-            <h1 className='header_giant'><P r='index' k='title' /></h1>
-          </div>
 
-          <div className='col col--6of12 col--tablet_landscape--7of12 col--tablet_portrait--9of12 col--phone--11of12'>
-            <div className='grid grid--guttered'>
-              <div className='col col--4of12 col--tablet_portrait--5of12'>
-                <h3 className='info_big'><P r='index' k='city' /></h3>
-              </div>
-              <div className='col col--4of12 col--phone--5of12 text_center'>
-                <h4 className='header_medium'><P r='index' k='hours' /></h4>
-              </div>
-              <div className='col col--3of12 col--phone--2of12'>
-                <h4 className='info_small text_right'><P r='index' k='days' /></h4>
-              </div>
-              
-              <div className='col col--12of12 big_bottom' />
-              <div className='col col--12of12 tablet_portrait_only'>
-                <a href='' className='info_medium'>
-                  <small className='info_small'><P r='index' k='address_more' /></small><br />
-                  <P r='index' k='address' />
-                </a>
-              </div>
-              <div className='col col--12of12 big_bottom tablet_portrait_only' />
-              <div className='col col--12of12 tablet_portrait_only'>
+        <div className='grid grid--center' style={{zIndex: 1}}>
+          <div className='col col--6of12'>
+            <div className='grid grid--guttered' style={{zIndex: 1}}>
+              <div className='col col--12of12'>
                 <h1 className='header_giant'><P r='index' k='title' /></h1>
               </div>
 
-              <div className='col col--12of12 col--tablet_portrait--last'>
-                <h2 className='header_small'><P r='index' k='sub_description' /></h2>
+              <div className='col col--12of12'>
+                <A r='menu' k='address_link' blank className='info_medium'> 
+                  <small className='info_small'><P r='index' k='address_more' /></small><br />
+                  <P r='index' k='address' />
+                </A>
               </div>
-              <div className='col col--12of12 big_bottom' />
+
+              <div className='col col--9of12 col--bottom'>
+                <h4 className='header_medium'><P r='index' k='hours' /></h4>
+              </div>
+
+              <div className='col col--3of12 text_right'>
+                <A r='menu' k='facebook_link' blank><Icon i='facebook' /></A>
+                <div className='normal_bottom' />
+                <A r='menu' k='instagram_link' blank><Icon i='instagram' /></A>
+                <div className='normal_bottom' />
+                <A r='menu' k='email_link' blank><Icon i='mail' /></A>
+              </div>
+
+              <div className='col col--spacer' />
+
+              <div className='col col--6of12'>
+                <h3 className='info_big'><P r='index' k='city' /></h3>
+              </div>
+              <div className='col col--6of12 text_right'>
+                <h3 className='header_big'><P r='index' k='year' /></h3>
+              </div>
+
+              <div className='col col--12of12 medium_bottom' />
+              <div className='col col--12of12'>
+                <h2 className='header_medium'><P r='index' k='sub_description' /></h2>
+              </div>
+              <div className='col col--12of12 medium_bottom' />
+
               <div className='col col--12of12'>
                 <p className='paragraph_big'><P r='index' k='description' /></p>
               </div>
-              <div className='col col--12of12 big_bottom tablet_portrait_only' />
+
+              <div className='col col--spacer' />
+
+              <div className='col col--12of12'>
+                <p className='header_big'><P r='index' k='pizza_1' /></p>
+              </div>
+              <div className='col col--4of12 col--rotate'>
+                <p className='header_small' style={{maxHeight: '40vh'}}><P r='index' k='pizza_2' /></p>
+              </div>
+
+              <div className='col col--8of12'>
+                <p className='info_small big_bottom'><P r='index' k='pizza_3' /></p>
+                <p className='paragraph_medium'><P r='index' k='pizza_4' /></p>
+              </div>
+
+              <div className='col col--spacer' />
+
+              <div className='col col--8of12'>
+                <p className='info_medium medium_bottom'><P r='index' k='seasons_1' /></p>
+                <p className='header_small'><P r='index' k='seasons_3' /></p>
+              </div>
+              <div className='col col--4of12 col--rotate col--rotate--inverse'>
+                <p className='header_medium' style={{maxHeight: '40vh'}}><P r='index' k='seasons_2' /></p>
+              </div>
             </div>
           </div>
-
-          <div className='col col--1of12 col--rotate hide_on_tablet_portrait'>
-            <A r='index' k='address_link' blank className='info_medium'> 
-              <small className='info_small'><P r='index' k='address_more' /></small><br />
-              <P r='index' k='address' />
-            </A>
-          </div>
-
-          {/* <div className='col col--1of12 text_right hide_on_phone'>
-            <A r='index' k='facebook' blank><Icon i='facebook' /></A>
-            <div className='medium_bottom' />
-            <A r='index' k='instagram' blank><Icon i='instagram' /></A>
-            <div className='medium_bottom' />
-            <A r='index' k='mail' blank><Icon i='mail' /></A>
-          </div> */}
         </div>
       </div>
     </div>

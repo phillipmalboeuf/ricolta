@@ -11,9 +11,10 @@
 }
 
   .box {
-    @extend .padded;
     @extend .grid;
     @extend .grid--middle;
+
+    padding: 25vh $gutter*2;
 
     min-height: 53.333vh;
     width: 33.333vw;
@@ -34,7 +35,7 @@
 
     .box__top_left {
       position: absolute;
-      top: $gutter;
+      top: 0;
       left: 0;
       width: 100%;
     }

@@ -1,0 +1,34 @@
+
+
+// #MENU
+
+.menu {
+  @extend .grid;
+  @extend .grid--vertically_spaced;
+  min-height: 100vh;
+  width: 100vw;
+
+  padding: 12vh $gutter*4 8vh;
+
+  background: $beige;
+  border: $gutter solid $white;
+
+  > a {
+    width: 100%;
+    text-align: center;
+  }
+
+  > .grid > a {
+    margin-left: $gutter*3;
+  }
+
+  .header_big {
+    font-size: (62/$base) * 1rem;
+    line-height: (64/$base) * 1rem;
+  }
+
+  .header_small {
+    font-size: (18/$base) * 1rem;
+    line-height: (24/$base) * 1rem;
+  }
+}

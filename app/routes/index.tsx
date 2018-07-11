@@ -7,6 +7,7 @@ import { context } from '../context'
 import { Button } from '../components/button'
 import { Icon } from '../components/icon'
 import { P, A, Img } from '../components/piece'
+import { Menu } from '../components/menu'
 import { GoogleMap } from '../components/map'
 
 
@@ -173,6 +174,8 @@ export class Index extends React.Component<Props, State> {
           </div>
         </div>
       </div>
+
+      <Menu />
     </div>
   }
 }

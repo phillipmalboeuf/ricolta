@@ -86,7 +86,7 @@ a {
   &.a--anchor {
     display: block;
     position: relative;
-    top: -$rythm*2;
+    top: -$rythm*4;
     visibility: hidden;
   }
 
@@ -203,7 +203,7 @@ sub {
 .paragraph_big {
   font-size: (37/$base) * 1rem;
   line-height: (58/$base) * 1rem;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.09em;
 }
 

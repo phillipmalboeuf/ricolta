@@ -40,6 +40,7 @@ export const HTML: React.SFC<Props> = (props) => {
       
       <script dangerouslySetInnerHTML={{ __html: `window.pieces = ${JSON.stringify(props.pieces)}` }} />
       <script dangerouslySetInnerHTML={{ __html: `window.response = ${JSON.stringify(props.response)}` }} />
+      <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBvxwTjOxuO7p3tNFL4feobGr4lWuCgMqo'></script>
       <script src='/dist/app.js'></script>
     </body>
     </html>

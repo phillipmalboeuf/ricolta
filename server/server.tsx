@@ -66,7 +66,7 @@ server.get('/*', (req: Request, res: Response) => {
   ]).then(([pieces, user])=> {
     res.send(ReactDOM.renderToString(
       <HTML pieces={pieces}>
-        <Routes />
+        <Routes host={req.hostname} />
       </HTML>
     ))
   })

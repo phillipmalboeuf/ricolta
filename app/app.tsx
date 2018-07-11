@@ -20,7 +20,7 @@ const app = (pieces, response, user)=> <AppContext.Provider value={{
   }}>
     <BrowserRouter>
       <>
-        <Routes />
+        <Routes host={window.location.host} />
       </>
     </BrowserRouter>
   </AppContext.Provider>

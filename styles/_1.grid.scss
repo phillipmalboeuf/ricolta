@@ -119,6 +119,10 @@
     &.col--spacer {
       width: 100%;
       height: 50vh;
+
+      @media #{$tablet_portrait} {
+        height: 38vh;
+      }
     }
 
     &.col--middle {

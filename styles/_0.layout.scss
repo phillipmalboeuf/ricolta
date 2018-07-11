@@ -135,6 +135,7 @@ footer {
 .inline_block { display: inline-block; }
 .text_center { text-align: center; }
 .text_right { text-align: right; }
+.text_right_on_tablet_portrait { @media #{$tablet_portrait} { text-align: right; } }
 .text_left { text-align: left; }
 .grow { flex-grow: 1; }
 .scroll { overflow: scroll; }

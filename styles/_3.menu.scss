@@ -13,13 +13,18 @@
   background: $beige;
   border: $gutter solid $white;
 
+  @media #{$phone} {
+    padding: 14vh $gutter 6vh;
+  }
+
+
   > a {
     width: 100%;
     text-align: center;
   }
 
-  > .grid > a {
-    margin-left: $gutter*3;
+  > .grid > .header_small {
+    padding: $rythm/3 $rythm*1.5;
   }
 
   .header_big {
@@ -30,5 +35,44 @@
   .header_small {
     font-size: (18/$base) * 1rem;
     line-height: (24/$base) * 1rem;
+  }
+
+
+  &.menu--fixed {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    z-index: 9;
+
+    transition: transform $slow;
+    transform: translateY(0);
+
+    &.menu--visible {
+      transform: translateY(-100%);
+    }
+  }
+}
+
+button.menu_button {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+
+  padding: $gutter*2;
+
+  rect {
+    transform: translate(0, 0) rotate(0deg);
+    transform-origin: 50% 50%;
+    transform-box: fill-box;
+    transition: transform $slow;
+  }
+
+  &.menu_button--toggled {
+    rect {
+      &:nth-child(1) { transform: translate(0, 400%) rotate(45deg); }
+      &:nth-child(2) { transform: rotate(-45deg); }
+      &:nth-child(3) { transform: translate(0, -400%) rotate(-45deg); }
+    }
   }
 }

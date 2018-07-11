@@ -30,20 +30,18 @@ export class New extends React.PureComponent<Props, State> {
 
   constructor(props: Props) {
     super(props)
-    console.log(props)
     this.state = {}
-
-    this.vertical = window.innerWidth < window.innerHeight
   }
 
   componentDidMount() {
     this.scroll()
+    this.vertical = window.innerWidth < window.innerHeight
     window.addEventListener('scroll', this.scroll.bind(this))
   }
 
   componentWillUnmount(){
     delete this.photos
-    this.photos = []
+    delete this.vertical
     window.removeEventListener('scroll', this.scroll.bind(this))
   }
 

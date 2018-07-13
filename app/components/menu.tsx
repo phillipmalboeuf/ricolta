@@ -66,7 +66,7 @@ export class Menu extends React.Component<Props, State> {
       <a href='#benvenuto' onClick={(e)=> this.linkclick(e)} className='header_big'><P r='menu' k='benvenuto' /></a>
       <a href='#pizza' onClick={(e)=> this.linkclick(e)} className='header_big'><P r='menu' k='pizza' /></a>
       <a href='#local' onClick={(e)=> this.linkclick(e)} className='header_big'><P r='menu' k='local' /></a>
-      <a href='/' className='paragraph_big' onClick={()=> document.cookie = `locale=${this.props.context.pieces.locale === 'en_CA' ? 'fr_CA' : 'en_CA'}`}>
+      <a href='/' className='paragraph_big' onClick={()=> document.cookie = `locale=${this.props.context.pieces.locale.includes('en') ? 'fr_CA' : 'en_CA'}`}>
         <P r='menu' k='other_language' />
       </a>
       <div className='grid grid--center'>

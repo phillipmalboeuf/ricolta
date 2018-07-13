@@ -62,7 +62,7 @@ models.forEach(model => {
 
 server.get('/*', (req: Request, res: Response) => {
   Promise.all([
-    Piece.list({})
+    Piece.list({}, undefined, undefined, undefined, req.locale)
   ]).then(([pieces, user])=> {
     res.send(ReactDOM.renderToString(
       <HTML pieces={pieces}>

@@ -27,6 +27,10 @@
       width: 100vw;
 
       padding: 25vh $gutter*2;
+
+      &.box--full--tight {
+        padding: 15vh $gutter*2;
+      }
     }
 
     @media #{$phone} {

@@ -36,9 +36,9 @@ export class Index extends React.PureComponent<Props, State> {
 
   public render() {
     return <div className='boxes'>
-      <div className='box box--full'>
+      <div className='box box--full box--full--tight'>
         <div className="box__top_right">
-          <a href='/' className='button--transparent paragraph_medium' onClick={()=> document.cookie = `locale=${this.props.context.pieces.locale === 'en_CA' ? 'fr_CA' : 'en_CA'}`}>
+          <a href='/' className='button--transparent paragraph_medium' onClick={()=> document.cookie = `locale=${this.props.context.pieces.locale.includes('en') ? 'fr_CA' : 'en_CA'}`}>
             <P r='menu' k='other_language' />
           </a>
         </div>
@@ -72,9 +72,9 @@ export class Index extends React.PureComponent<Props, State> {
               </div>
 
               <div className='col col--12of12 col--tablet_portrait--last'>
-                <h2 className='header_small'><P r='index' k='sub_description' /></h2>
+                <h2 className='header_medium'><P r='index' k='sub_description' /></h2>
               </div>
-              <div className='col col--12of12 big_bottom' />
+              <div className='col col--12of12 medium_bottom' />
               <div className='col col--12of12'>
                 <p className='paragraph_big'><P r='index' k='description' /></p>
               </div>

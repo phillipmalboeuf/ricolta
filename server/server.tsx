@@ -35,8 +35,6 @@ server.use(createLocaleMiddleware({
   'default': 'fr_CA'
 }))
 server.use(morgan('dev'))
-
-server.use('/files', express.static(`${__dirname}`))
 server.use('/dist', express.static(`${__dirname}`))
 
 const models = [

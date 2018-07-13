@@ -57,7 +57,7 @@ export class New extends React.PureComponent<Props, State> {
           <div className='col col--3of12 col--tablet_portrait--4of12 col--tablet_portrait--first' ref={element => this.photos.push(element)}><Img r='index' k='photo_1' /></div>
           <div className='col col--3of12 col--tablet_portrait--4of12 col--tablet_portrait--first' />
           <div className='col col--9of12 col--tablet_portrait--8of12 col--tablet_portrait--first' />
-          <div className='col col--3of12 col--tablet_portrait--4of12 col--tablet_portrait--first map' style={{zIndex: 2}} ref={element => this.photos.push(element)}>
+          <div className='col col--3of12 col--tablet_portrait--4of12 col--tablet_portrait--first map' ref={element => this.photos.push(element)}>
             <GoogleMap
               zoom={13}
               center={{

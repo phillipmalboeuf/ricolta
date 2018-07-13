@@ -36,20 +36,20 @@ export class GoogleMap extends React.Component<Props, State> {
   componentDidMount() {
 
     let colors = {
-      base: '#f8f5ee',
-      text: '#d0b787',
+      base: '#FFFFFF',
+      text: '#999999',
       textStroke: '#FFFFFF',
-      road: '#ffffff',
-      highway: '#ffffff',
-      roadText: '#d0b787',
-      poi: '#d0b787',
-      poiText: '#d0b787',
-      park: '#d0b787',
-      parkText: '#d0b787',
-      transitLine: '#f8f5ee',
-      transitStation: '#f8f5ee',
-      water: '#d0b787',
-      waterText: '#f8f5ee'
+      road: '#f8f5ee',
+      highway: '#d0b787',
+      roadText: '#999999',
+      poi: '#FFFFFF',
+      poiText: '#999999',
+      park: '#FFFFFF',
+      parkText: '#999999',
+      transitLine: '#999999',
+      transitStation: '#999999',
+      water: '#cddee8',
+      waterText: '#999999'
     }
 
     this.map = new google.maps.Map(this.element, {

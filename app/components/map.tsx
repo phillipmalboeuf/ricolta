@@ -37,19 +37,19 @@ export class GoogleMap extends React.Component<Props, State> {
 
     let colors = {
       base: '#FFFFFF',
-      text: '#999999',
+      text: '#dddddd',
       textStroke: '#FFFFFF',
-      road: '#DDDDDD',
-      highway: '#999999',
-      roadText: '#999999',
+      road: '#eeeeee',
+      highway: '#dddddd',
+      roadText: '#dddddd',
       poi: '#FFFFFF',
-      poiText: '#999999',
+      poiText: '#dddddd',
       park: '#FFFFFF',
-      parkText: '#999999',
-      transitLine: '#999999',
-      transitStation: '#999999',
+      parkText: '#dddddd',
+      transitLine: '#dddddd',
+      transitStation: '#dddddd',
       water: '#cddee8',
-      waterText: '#999999'
+      waterText: '#dddddd'
     }
 
     this.map = new google.maps.Map(this.element, {

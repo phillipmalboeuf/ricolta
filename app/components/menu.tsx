@@ -90,7 +90,7 @@ export class Menu extends React.Component<Props, State> {
         {nav}
         
         <div className='box__bottom_right'>
-          {this.props.context.user._id
+          {this.props.context.user && this.props.context.user._id
           ? <Link to='/logout'>Logout</Link>
           : <Link to='/login' className='beige'>Login</Link>}
         </div>

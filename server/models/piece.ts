@@ -31,7 +31,14 @@ export default class Piece extends Model {
 
   static update(_id, data, locale?) {
     return super.update(_id, Object.keys(data.content).reduce((content, key)=> {
-      content[`content.${key}`] = data.content[key]
+      
+
+      if (locale && locale.toString() !== CONF('DEFAULT_LOCALE')) {
+        content[`translations.${locale.language}.content.${key}`] = data.content[key]
+      } else {
+        content[`content.${key}`] = data.content[key]
+      }
+
       return content
     }, {}))
   }

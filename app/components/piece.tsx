@@ -48,7 +48,8 @@ class _P extends React.Component<Props, State> {
     })
   }
 
-  protected save() {
+  protected save(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault()
     this.piece.save({
       content: {
         [this.props.k]: this.state.value
@@ -63,7 +64,7 @@ class _P extends React.Component<Props, State> {
     return this.props.context.editable
       ? <>
         <span contentEditable suppressContentEditableWarning onInput={e => this.input(e)} onClick={e => e.preventDefault()}>{Parser(this.props.context.pieces[this.props.r][this.props.k])}</span>
-        <Button sup disabled={this.state.value === undefined} label='Save' onClick={e => this.save()} />
+        <Button sup disabled={this.state.value === undefined} label='Save' onClick={e => this.save(e)} />
       </>
       : Parser(this.props.context.pieces[this.props.r][this.props.k])
   }
@@ -77,7 +78,7 @@ class _A extends _P {
         <a href={this.props.context.pieces[this.props.r][this.props.k]} className={this.props.className} target={this.props.blank ? '_blank' : undefined}>{this.props.children}</a>
         <br />
         <span contentEditable suppressContentEditableWarning onInput={e => this.input(e)}>{this.props.context.pieces[this.props.r][this.props.k]}</span>
-        <Button sup disabled={this.state.value === undefined} label='Save' onClick={e => this.save()} />
+        <Button sup disabled={this.state.value === undefined} label='Save' onClick={e => this.save(e)} />
       </>
       : <a href={this.props.context.pieces[this.props.r][this.props.k]} className={this.props.className} target={this.props.blank ? '_blank' : undefined}>{this.props.children}</a>
   }

@@ -50,6 +50,17 @@
     }
   }
 
+  .box__bottom_right {
+    position: fixed;
+    z-index: 12;
+    bottom: $gutter*3;
+    right: $gutter*3;
+
+    @media #{$phone} {
+      display: none;
+    }
+  }
+
     .box__border {
       position: absolute;
       top: 0;

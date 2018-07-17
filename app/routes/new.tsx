@@ -10,13 +10,16 @@ import { P, A, Img } from '../components/piece'
 import { Menu } from '../components/menu'
 import { GoogleMap } from '../components/map'
 
+import User from '../models/user'
+
 
 interface Props extends RouteComponentProps<any> {
   context?: {
     pieces: {
       _id: string,
       [key:string]: any  
-    }
+    },
+    user: User
   }
 }
 interface State {}
@@ -40,8 +43,6 @@ export class New extends React.PureComponent<Props, State> {
   }
 
   componentWillUnmount(){
-    delete this.photos
-    delete this.vertical
     window.removeEventListener('scroll', this.scroll.bind(this))
   }
 

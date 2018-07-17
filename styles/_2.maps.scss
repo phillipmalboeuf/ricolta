@@ -5,8 +5,11 @@
   height: 25vw;
   z-index: 3;
 
+  @media #{$tablet_landscape} {
+    z-index: 2;
+  }
+
   @media #{$tablet_portrait} {
     height: 33vw;
-    z-index: 2;
   }
 }

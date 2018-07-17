@@ -5,6 +5,7 @@
 .menu {
   @extend .grid;
   @extend .grid--vertically_spaced;
+  position: relative;
   min-height: 100vh;
   width: 100vw;
 

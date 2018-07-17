@@ -7,6 +7,7 @@ import { context } from '../context'
 import { Button } from '../components/button'
 import { Icon } from '../components/icon'
 import { P, A, Img } from '../components/piece'
+import User from '../models/user'
 
 
 interface Props {
@@ -14,7 +15,8 @@ interface Props {
     pieces: {
       _id: string,
       [key:string]: any  
-    }
+    },
+    user: User
   }
 }
 interface State {
@@ -86,6 +88,12 @@ export class Menu extends React.Component<Props, State> {
       </button>
       <nav className={`menu`}>
         {nav}
+        
+        <div className='box__bottom_right'>
+          {this.props.context.user._id
+          ? <Link to='/logout'>Logout</Link>
+          : <Link to='/login' className='beige'>Login</Link>}
+        </div>
       </nav>
       <nav className={`menu menu--fixed${this.state.visible ? ' menu--visible' : ''}`}>
         {nav}

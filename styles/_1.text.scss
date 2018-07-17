@@ -253,6 +253,7 @@ sub {
 .red { color: $red; }
 .blue { color: $blue; }
 .yellow { color: $yellow; }
+.beige { color: $beige; }
 
 .green_on_hover { &:hover, &:focus { color: $green; } }
 .red_on_hover { &:hover, &:focus { color: $red; } }

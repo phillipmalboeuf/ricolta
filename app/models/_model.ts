@@ -1,19 +1,20 @@
-
 import axios, { AxiosRequestConfig } from 'axios'
+
 
 export default class Model {
 
   static endpoint: string = 'models'
 
   public _id : string
-  public attributes : any
+  public attributes : {[key:string]: any}
+  public error: {status: number, message: string, fields?: [{name: string, message: string}]}
 
   constructor(attributes?: any) {
     this._id = attributes ? attributes._id : undefined
     this.attributes = attributes
   }
 
-  protected static request(method: string, endpoint: string, data?: any, locale?: string) {
+  protected static request(method: string, endpoint: string, data?: any) {
     return axios({
       method,
       url: `${process.env.NODE_ENV === 'production' ? '' : '//localhost:8089'}/${this.endpoint}${endpoint}`,
@@ -21,19 +22,17 @@ export default class Model {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        ...(locale ? {'Accept-Language': locale} : {})
       },
       responseType: 'json',
-      body: data ? JSON.stringify(data) : undefined
-    } as AxiosRequestConfig).then(response => ({
-      ...response.data,
-      language: response.headers['content-language']
-    }))
-      
+      data: data ? JSON.stringify(data) : undefined
+    } as AxiosRequestConfig)
+      .then(response => {
+        return response.data
+      })
   }
 
-  static list(locale?: string) {
-    return this.request('GET', '', null, locale)
+  static list() {
+    return this.request('GET', '')
       .then(json => {
         return json.map ? json.map((model: any)=> new this(model)) : json
       })
@@ -48,11 +47,18 @@ export default class Model {
       })
   }
 
-  public save(data: any) {
+  public save(data: {[key:string]: any}) {
     return (this.constructor as typeof Model).request(this._id ? 'PUT' : 'POST', `${this._id ? `/${this._id}` : ''}`, data)
       .then(json => {
+        this.error = undefined
         this._id = json._id
         this.attributes = json
+        return this
+      }).catch(error => {
+        this.error = {
+          ...error.response.data,
+          status: error.response.status
+        }
         return this
       })
   }

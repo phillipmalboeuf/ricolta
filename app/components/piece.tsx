@@ -4,6 +4,7 @@ import * as React from 'react'
 
 import { context } from '../context'
 import Piece from '../models/piece'
+import { Button } from './button'
 
 
 
@@ -16,41 +17,73 @@ interface Props {
     pieces: {
       _id: string,
       [key:string]: any  
-    }
+    },
+    editable: boolean
   }
 }
+
 interface State {
-  piece?: Piece
+  value?: any
 }
 
-@context
-export class P extends React.Component<Props, State> {
+
+class _P extends React.Component<Props, State> {
+
+  public piece: Piece
 
   constructor(props: Props) {
     super(props)
     this.state = {
-      // piece: new Piece({_id: props.piece._id})
     }
+
+    this.piece = new Piece({_id: props.context.pieces[this.props.r]._id})
   }
 
   componentDidMount() {
   }
 
+  protected input(e: React.FormEvent<HTMLSpanElement>) {
+    this.setState({
+      value: e.currentTarget.innerHTML
+    })
+  }
+
+  protected save() {
+    this.piece.save({
+      content: {
+        [this.props.k]: this.state.value
+      }
+    })
+      .then(piece => this.setState({ 
+        value: undefined
+      }))
+  }
+
   public render() {
-    return Parser(this.props.context.pieces[this.props.r][this.props.k])
+    return this.props.context.editable
+      ? <>
+        <span contentEditable suppressContentEditableWarning onInput={e => this.input(e)} onClick={e => e.preventDefault()}>{Parser(this.props.context.pieces[this.props.r][this.props.k])}</span>
+        <Button sup disabled={this.state.value === undefined} label='Save' onClick={e => this.save()} />
+      </>
+      : Parser(this.props.context.pieces[this.props.r][this.props.k])
   }
 }
 
-@context
-export class A extends P {
+class _A extends _P {
 
   public render() {
-    return <a href={this.props.context.pieces[this.props.r][this.props.k]} className={this.props.className} target={this.props.blank ? '_blank' : undefined}>{this.props.children}</a>
+    return this.props.context.editable
+      ? <>
+        <a href={this.props.context.pieces[this.props.r][this.props.k]} className={this.props.className} target={this.props.blank ? '_blank' : undefined}>{this.props.children}</a>
+        <br />
+        <span contentEditable suppressContentEditableWarning onInput={e => this.input(e)}>{this.props.context.pieces[this.props.r][this.props.k]}</span>
+        <Button sup disabled={this.state.value === undefined} label='Save' onClick={e => this.save()} />
+      </>
+      : <a href={this.props.context.pieces[this.props.r][this.props.k]} className={this.props.className} target={this.props.blank ? '_blank' : undefined}>{this.props.children}</a>
   }
 }
 
-@context
-export class Img extends P {
+class _Img extends _P {
 
   public render() {
     return <picture>
@@ -58,3 +91,8 @@ export class Img extends P {
     </picture>
   }
 }
+
+
+export const P = context(_P)
+export const A = context(_A)
+export const Img = context(_Img)

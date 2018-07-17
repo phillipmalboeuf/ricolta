@@ -11,7 +11,8 @@ export const AppContext = React.createContext({
     }
   },
   response: undefined as any,
-  user: undefined as User
+  user: undefined as User,
+  editable: false as boolean
 })
 
 export const context = withContext(AppContext)

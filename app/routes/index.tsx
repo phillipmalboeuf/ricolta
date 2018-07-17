@@ -8,13 +8,16 @@ import { Button } from '../components/button'
 import { Icon } from '../components/icon'
 import { P, A, Img } from '../components/piece'
 
+import User from '../models/user'
+
 
 interface Props extends RouteComponentProps<any> {
   context?: {
     pieces: {
       _id: string,
       [key:string]: any  
-    }
+    },
+    user: User
   }
 }
 interface State {}
@@ -37,7 +40,7 @@ export class Index extends React.PureComponent<Props, State> {
   public render() {
     return <div className='boxes'>
       <div className='box box--full box--full--tight'>
-        <div className="box__top_right">
+        <div className='box__top_right'>
           <a href='/' className='button--transparent paragraph_medium' onClick={()=> document.cookie = `locale=${this.props.context.pieces.locale.includes('en') ? 'fr_CA' : 'en_CA'}`}>
             <P r='menu' k='other_language' />
           </a>

@@ -11,7 +11,7 @@ label,
 
   color: inherit;
   font-size: $base_size;
-  font-weight: bold;
+  font-weight: normal;
 
   margin-bottom: $rythm/6;
 }
@@ -20,7 +20,7 @@ label,
 
 [contenteditable] {
   position: relative;
-  background: fade-out($black, 0.95);
+  border: 1px solid $grey;
 
   &:active {
     top: 1px;

@@ -3,20 +3,33 @@
 import * as React from 'react'
 import { Redirect } from 'react-router-dom'
 
+import Model from '../models/_model'
+import { Button } from './button'
+
+
 export const FormContext = React.createContext({
-  onChange: function(e: React.ChangeEvent<HTMLInputElement>): void {}
+  form_id: undefined as string,
+  values: {} as { [key:string]: any },
+  onChange: function(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>): void {},
+  errorFields: undefined as {[name:string]: any}
 })
 
 
-import Model from '../models/_model'
 
 interface Props {
+  id: string,
   model: Model,
-  cta?: string
+  values?: { [key:string]: any },
+  cta?: string,
+  redirect?: string | boolean,
+  onSubmit?: Function,
+  nobutton?: boolean
 }
 interface State {
+  model: Model,
   values: { [key:string]: any },
-  model: Model
+  waiting: boolean,
+  success: boolean
 }
 
 export class Form extends React.Component<Props, State> {
@@ -24,18 +37,37 @@ export class Form extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      values: {},
-      model: props.model
+      model: props.model,
+      values: props.values || {},
+      waiting: false,
+      success: false
     }
   }
 
   onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    this.setState({
+      waiting: true
+    })
+
     this.state.model.save(this.state.values)
-      .then(model => this.setState({ 
-        values: {},
-        model: model
-      }))
+      .then(model => {
+        if (model.error) {
+          this.setState({
+            model,
+            waiting: false
+          })
+        } else {
+          if (this.props.onSubmit) {
+            this.props.onSubmit(e, this.state)
+          }
+          this.setState({ 
+            model,
+            values: {},
+            success: true
+          })
+        }
+      })
   }
 
   onChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -54,11 +86,19 @@ export class Form extends React.Component<Props, State> {
 
   public render() {
     return <form onSubmit={this.onSubmit.bind(this)}>
-      <FormContext.Provider value={{onChange: this.onChange.bind(this)}}>
+      <FormContext.Provider value={{
+          form_id: this.props.id,
+          onChange: this.onChange.bind(this),
+          values: this.state.values,
+          errorFields: this.state.model.error && this.state.model.error.fields
+        }}>
         {this.props.children}
       </FormContext.Provider>
-      <button className='normal_top' type='submit' disabled={Object.keys(this.state.values).length === 0}>{this.props.cta || 'Save'}</button>
-      {this.state.model._id && <Redirect push to={`/${this.state.model.constructor.endpoint}/${this.state.model._id}`} />}
+      {this.state.model.error && <div className='alert'>{this.state.model.error.message}</div>}
+
+      {!this.props.nobutton && <Button submit label={this.state.waiting ? 'One moment...' : this.props.cta || 'Save'} disabled={this.state.waiting} />}
+
+      {this.state.success && this.props.redirect !== false && <Redirect push to={this.props.redirect ? this.props.redirect as string : `/${(this.state.model.constructor as typeof Model).endpoint}/${this.state.model._id}`} />}
     </form>
   }
 }

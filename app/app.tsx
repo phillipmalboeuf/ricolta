@@ -13,10 +13,11 @@ import { Routes } from './routes'
 import { AppContext } from './context'
 
 
-const app = (pieces, response, user)=> <AppContext.Provider value={{
+const app = (pieces, response, user, editable)=> <AppContext.Provider value={{
     pieces,
     response,
-    user
+    user,
+    editable
   }}>
     <BrowserRouter>
       <>
@@ -30,7 +31,7 @@ let user = new User({_id: cookies.get('User-Id')})
 
 if (process.env.NODE_ENV === 'production') {
   ReactDOM.hydrate(
-    app(window.pieces, window.response, user),
+    app(window.pieces, window.response, user, user._id ? true : false),
     document.getElementById('app'))
 } else {
   Promise.all([
@@ -38,7 +39,7 @@ if (process.env.NODE_ENV === 'production') {
     user._id ? user.fetch() : Promise.resolve(user)
   ]).then(([pieces, user])=>
     ReactDOM.render(
-      app(pieces, undefined, user),
+      app(pieces, undefined, user, user._id ? true : false),
       document.getElementById('app')))
 }
 

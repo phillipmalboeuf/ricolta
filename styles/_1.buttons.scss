@@ -42,6 +42,16 @@ button {
     }
   }
 
+  &.button--sup {
+    padding: $rythm/4 $rythm/2;
+    vertical-align: top;
+    // position: absolute;
+
+    &:active {
+      top: auto;
+    }
+  }
+
   &.button--full {
     padding-right: 0;
     padding-left: 0;

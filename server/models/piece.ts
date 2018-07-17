@@ -16,7 +16,7 @@ export default class Piece extends Model {
         _id: piece._id
       }
 
-      if (locale && locale.toString() !== CONF('DEFAULT_LOCALE')) {
+      if (locale && locale.toString() !== CONF('DEFAULT_LOCALE') && piece.translations[locale.language]) {
         values[piece.route] = {
           ...values[piece.route],
           ...piece.translations[locale.language].content

@@ -16,5 +16,5 @@ export const Routes: React.SFC<Props> = (props)=> <Switch>
   <Route exact path='/logout' component={Logout} />
   <Redirect from='/sessions/:_id' to='/' />
 
-  <Route exact path='/' component={props.host == 'localhost:8080' ? New : Index} />
+  <Route exact path='/' component={props.host == 'dev.ricolta.com' ? New : Index} />
 </Switch>

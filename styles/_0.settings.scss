@@ -28,7 +28,7 @@ $alternate_font: $body_font;
 $base: 16;
 $base_size: $base * 1px;
 $rythm: 1rem;
-$max_width: 1400px;
+$max_width: 1800px;
 $border_radius: 0;
 
 $number_of_columns: 12;
@@ -47,6 +47,6 @@ $very_slow: 0.999s;
 $phone: 'all and (max-device-width:600px), all and (max-width:600px)';
 $tablet_portrait: 'all and (max-device-width:900px), all and (max-width:900px)';
 $tablet_landscape: 'all and (max-device-width:1300px), all and (max-width:1300px)';
-$big_desktop: 'all and (min-device-width:1800px), all and (min-width:1800px)';
+$big_desktop: 'all and (min-device-width:1900px), all and (min-width:1900px)';
 $breakpoints: 'big_desktop' $big_desktop, 'tablet_landscape' $tablet_landscape, 'tablet_portrait' $tablet_portrait, 'phone' $phone;
 

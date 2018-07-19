@@ -7,7 +7,7 @@ html {
   font-variant-ligatures: none;
 
   @media #{$big_desktop} {
-    font-size: 18px;
+    font-size: 22px;
   }
 
   @media #{$tablet_landscape} {
@@ -177,11 +177,16 @@ sub {
 // #STYLES
 
 .header_giant {
-  font-size: (210/$base) * 1rem;
+  font-size: (232/$base) * 1rem;
   line-height: (200/$base) * 1rem;
   font-style: italic;
   font-weight: 500;
   letter-spacing: 0.04em;
+
+  @media #{$big_desktop} {
+    font-size: (260/$base) * 1rem;
+    line-height: (230/$base) * 1rem;
+  }
 
   @media #{$tablet_landscape} {
     font-size: (180/$base) * 1rem;
@@ -241,6 +246,11 @@ sub {
   font-weight: 500;
   letter-spacing: 0.09em;
 
+  @media #{$big_desktop} {
+    font-size: (24/$base) * 1rem;
+    line-height: (29/$base) * 1rem;
+  }
+
   @media #{$tablet_portrait} {
     font-size: (24/$base) * 1rem;
     line-height: (29/$base) * 1rem;
@@ -257,10 +267,15 @@ sub {
 
 .info_medium {
   font-size: (24/$base) * 1rem;
+  line-height: (30/$base) * 1rem;
   font-weight: 600;
   text-transform: uppercase;
-  line-height: (30/$base) * 1rem;
   letter-spacing: 0.1em;
+
+  @media #{$big_desktop} {
+    font-size: (28/$base) * 1rem;
+    line-height: (34/$base) * 1rem;
+  }
 }
 
 .info_small {
@@ -269,6 +284,10 @@ sub {
   text-transform: uppercase;
   line-height: (32/$base) * 1rem;
   letter-spacing: 0.11em;
+
+  @media #{$big_desktop} {
+    font-size: (20/$base) * 1rem;
+  }
 
   @media #{$tablet_portrait} {
     font-size: (18/$base) * 1rem;
@@ -323,6 +342,11 @@ sub {
   @media #{$phone} {
     height: $base_size*1.2;
     width: $base_size*1.2;
+  }
+
+  @media #{$big_desktop} {
+    height: $base_size*2.5;
+    width: $base_size*2.5;
   }
 }
 

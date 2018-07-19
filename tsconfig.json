@@ -4,6 +4,7 @@
     "noImplicitAny": false,
     "experimentalDecorators": true,
     "removeComments": true,
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "es2017",
       "dom"

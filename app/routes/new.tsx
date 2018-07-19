@@ -75,11 +75,12 @@ export class New extends React.PureComponent<Props, State> {
                 home: true
               }]} />
           </div>
+          <div className='col col--tablet_portrait--12of12 col--tablet_portrait--first tablet_portrait_only' style={{height: '25vw'}} />
           <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
           <div className='col col--6of12 col--tablet_portrait--8of12' style={{zIndex: 2}} ref={element => this.photos.push(element)}><Img r='index' k='photo_3' /></div>
           <div className='col col--6of12 col--tablet_portrait--4of12' />
           <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
-          <div className='col col--9of12 col--tablet_portrait--4of12' />
+          <div className='col col--9of12 col--tablet_portrait--8of12' />
           <div className='col col--3of12 col--tablet_portrait--4of12' ref={element => this.photos.push(element)}><Img r='index' k='photo_4' /></div>
           <div className='col col--3of12 col--tablet_portrait--4of12 col--tablet_portrait--first' ref={element => this.photos.push(element)}><Img r='index' k='photo_5' /></div>
           <div className='col col--9of12 hide_on_tablet_portrait' />
@@ -125,9 +126,9 @@ export class New extends React.PureComponent<Props, State> {
 
               <div className='col col--3of12 text_right'>
                 <A r='menu' k='facebook_link' blank><Icon i='facebook' /></A>
-                <div className='normal_bottom' />
+                <div className='normal_bottom small_bottom_on_phone' />
                 <A r='menu' k='instagram_link' blank><Icon i='instagram' /></A>
-                <div className='normal_bottom' />
+                <div className='normal_bottom small_bottom_on_phone' />
                 <A r='menu' k='email_link' blank><Icon i='mail' /></A>
               </div>
 

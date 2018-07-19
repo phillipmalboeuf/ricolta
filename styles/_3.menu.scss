@@ -32,6 +32,11 @@
   .header_big {
     font-size: (62/$base) * 1rem;
     line-height: (64/$base) * 1rem;
+
+    @media #{$tablet_portrait} {
+      font-size: (52/$base) * 1rem;
+      line-height: (52/$base) * 1rem;
+    }
   }
 
   .header_small {

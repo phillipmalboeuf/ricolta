@@ -105,9 +105,10 @@ footer {
 
 .full_height { height: 100vh !important; }
 .big_bottom { margin-bottom: $rythm*4; }
-.medium_bottom { margin-bottom: $rythm*2; }
+.medium_bottom { margin-bottom: $rythm*2; @media #{$tablet_portrait} { margin-bottom: $rythm*1.5; } }
 .normal_bottom { margin-bottom: $rythm; }
 .small_bottom { margin-bottom: $rythm/2; }
+.small_bottom_on_phone { @media #{$phone} { margin-bottom: $rythm/2 !important; } }
 .flat_bottom { margin-bottom: 0 !important; }
 .flat_bottom_on_phone { @media #{$phone} { margin-bottom: 0 !important; } }
 .flat_top { margin-top: 0 !important; }

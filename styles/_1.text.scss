@@ -203,6 +203,11 @@ sub {
   font-style: italic;
   font-weight: 600;
   letter-spacing: 0.01em;
+
+  @media #{$tablet_portrait} {
+    font-size: (32/$base) * 1rem;
+    line-height: (34/$base) * 1rem;
+  }
 }
 
 .header_small {
@@ -218,6 +223,11 @@ sub {
   line-height: (58/$base) * 1rem;
   font-weight: 400;
   letter-spacing: 0.09em;
+
+  @media #{$tablet_portrait} {
+    font-size: (30/$base) * 1rem;
+    line-height: (50/$base) * 1rem;
+  }
 }
 
 .paragraph_medium {
@@ -249,6 +259,11 @@ sub {
   text-transform: uppercase;
   line-height: (32/$base) * 1rem;
   letter-spacing: 0.11em;
+
+  @media #{$tablet_portrait} {
+    font-size: (13/$base) * 1rem;
+    vertical-align: bottom;
+  }
 }
 
 
@@ -290,6 +305,11 @@ sub {
   display: inline-block;
   fill: currentColor;
   vertical-align: bottom;
+
+  @media #{$tablet_portrait} {
+    height: $base_size*1.2;
+    width: $base_size*1.2;
+  }
 }
 
 iframe {

@@ -55,6 +55,7 @@
     transform: translateY(0);
 
     &.menu--visible {
+      z-index: 12;
       transform: translateY(-100%);
     }
   }
@@ -76,6 +77,7 @@ button.menu_button {
   }
 
   &.menu_button--toggled {
+    z-index: 13;
     rect {
       &:nth-child(1) { transform: translate(0, 400%) rotate(45deg); }
       &:nth-child(2) { transform: rotate(-45deg); }

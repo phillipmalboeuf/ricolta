@@ -8,6 +8,10 @@
 html {
   padding-bottom: 0 !important;
   overflow-x: hidden;
+
+  &.noscroll {
+    overflow: hidden;
+  }
 }
 
 body {

@@ -44,6 +44,7 @@ export class Menu extends React.Component<Props, State> {
 
   public toggle(e: React.MouseEvent<HTMLButtonElement>) {
     e.currentTarget.blur()
+    document.documentElement.classList.toggle('noscroll')
     this.setState({
       visible: !this.state.visible
     })

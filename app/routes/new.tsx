@@ -76,7 +76,7 @@ export class New extends React.PureComponent<Props, State> {
               }]} />
           </div>
           <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
-          <div className='col col--6of12 col--tablet_portrait--8of12' style={{zIndex: 3}} ref={element => this.photos.push(element)}><Img r='index' k='photo_3' /></div>
+          <div className='col col--6of12 col--tablet_portrait--8of12' style={{zIndex: 2}} ref={element => this.photos.push(element)}><Img r='index' k='photo_3' /></div>
           <div className='col col--6of12 col--tablet_portrait--4of12' />
           <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
           <div className='col col--9of12 col--tablet_portrait--4of12' />
@@ -85,22 +85,21 @@ export class New extends React.PureComponent<Props, State> {
           <div className='col col--9of12 hide_on_tablet_portrait' />
           <div className='col col--6of12 hide_on_tablet_portrait' />
           <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
-          <div className='col col--6of12 col--tablet_portrait--8of12' style={{zIndex: 3}} ref={element => this.photos.push(element)}><Img r='index' k='photo_6' /></div>
+          <div className='col col--6of12 col--tablet_portrait--8of12' style={{zIndex: 2}} ref={element => this.photos.push(element)}><Img r='index' k='photo_6' /></div>
           <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
           <div className='col col--3of12 col--tablet_portrait--4of12' style={{zIndex: 2}} ref={element => this.photos.push(element)}><Img r='index' k='photo_7' /></div>
           <div className='col col--9of12 hide_on_tablet_portrait' />
           <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
           <div className='col col--9of12 col--tablet_portrait--8of12' />
           <div className='col col--3of12 col--tablet_portrait--4of12' ref={element => this.photos.push(element)}><Img r='index' k='photo_8' /></div>
-          <div className='col col--3of12 hide_on_tablet_portrait' />
+          {/* <div className='col col--3of12 hide_on_tablet_portrait' /> */}
           <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
           <div className='col col--3of12 col--tablet_portrait--4of12' style={{zIndex: 2}} ref={element => this.photos.push(element)}><Img r='index' k='photo_9' /></div>
-          <div className='col col--6of12 hide_on_tablet_portrait' />
-          <div className='col col--12of12 hide_on_tablet_portrait' style={{height: '25vw'}} />
+          <div className='col col--9of12 hide_on_tablet_portrait' />
           <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
           <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
-          <div className='col col--6of12 col--tablet_portrait--4of12' />
-          <div className='col col--3of12 col--tablet_portrait--4of12' style={{zIndex: 3}} ref={element => this.photos.push(element)}><Img r='index' k='photo_10' /></div>
+          <div className='col col--9of12 col--tablet_portrait--4of12' />
+          <div className='col col--3of12 col--tablet_portrait--4of12' style={{zIndex: 2}} ref={element => this.photos.push(element)}><Img r='index' k='photo_10' /></div>
         </div>
 
         <div className='box__border' />

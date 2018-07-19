@@ -52,6 +52,7 @@ export class Menu extends React.Component<Props, State> {
 
   private linkclick(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault()
+    document.documentElement.classList.remove('noscroll')
     this.setState({
       visible: false
     })

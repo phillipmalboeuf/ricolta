@@ -6,6 +6,14 @@ html {
   font-weight: 400;
   font-variant-ligatures: none;
 
+  @media #{$big_desktop} {
+    font-size: 18px;
+  }
+
+  @media #{$tablet_landscape} {
+    font-size: 14px;
+  }
+
   @media #{$tablet_portrait} {
     font-size: 12px;
   }

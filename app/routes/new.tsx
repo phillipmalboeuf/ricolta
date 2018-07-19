@@ -104,7 +104,7 @@ export class New extends React.PureComponent<Props, State> {
 
         <div className='box__border' />
 
-        <div className='grid grid--center' style={{zIndex: 2}}>
+        <div className='grid grid--center max_width max_width--center' style={{zIndex: 2}}>
           <a id='benvenuto' className='a--anchor' />
           <div className='col col--6of12 col--tablet_portrait--8of12 col--phone--10of12'>
             <div className='grid grid--guttered'>

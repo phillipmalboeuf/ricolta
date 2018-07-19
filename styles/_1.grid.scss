@@ -109,10 +109,10 @@
     &.col--rotate {
       writing-mode: vertical-rl;
       transform-origin: 50% 50%;
-      transform: rotate(180deg) translate(-25%, 5%);
+      transform: rotate(180deg) translate(-10%, 5%);
 
       &.col--rotate--inverse {
-        transform: rotate(0deg) translate(-25%, 5%);
+        transform: rotate(0deg) translate(-10%, 5%);
       }
     }
 

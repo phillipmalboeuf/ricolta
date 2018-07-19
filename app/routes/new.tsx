@@ -38,7 +38,7 @@ export class New extends React.PureComponent<Props, State> {
 
   componentDidMount() {
     this.scroll()
-    this.vertical = window.innerWidth < window.innerHeight
+    this.vertical = window.innerWidth - 400 < window.innerHeight
     window.addEventListener('scroll', this.scroll.bind(this))
   }
 
@@ -62,15 +62,15 @@ export class New extends React.PureComponent<Props, State> {
             <GoogleMap
               zoom={13}
               center={{
-                lat: 45.507039,
-                lng: -73.550891
+                lat: 45.505214,
+                lng: -73.551935
               }}
               markers={[{
                 title: 'Ricolta',
-                link: 'https://goo.gl/maps/bWzWWJc3o6H2',
+                link: 'https://goo.gl/maps/LcgCs5ozd8L2',
                 position: {
-                  lat: 45.507039,
-                  lng: -73.550891
+                  lat: 45.505214,
+                  lng: -73.551935
                 },
                 home: true
               }]} />
@@ -85,9 +85,9 @@ export class New extends React.PureComponent<Props, State> {
           <div className='col col--3of12 col--tablet_portrait--4of12 col--tablet_portrait--first' ref={element => this.photos.push(element)}><Img r='index' k='photo_5' /></div>
           <div className='col col--9of12 hide_on_tablet_portrait' />
           <div className='col col--6of12 hide_on_tablet_portrait' />
-          <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
+          <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '40vw'}} />
           <div className='col col--6of12 col--tablet_portrait--8of12' style={{zIndex: 2}} ref={element => this.photos.push(element)}><Img r='index' k='photo_6' /></div>
-          <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
+          <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '90vw'}} />
           <div className='col col--3of12 col--tablet_portrait--4of12' style={{zIndex: 2}} ref={element => this.photos.push(element)}><Img r='index' k='photo_7' /></div>
           <div className='col col--9of12 hide_on_tablet_portrait' />
           <div className='col col--tablet_portrait--12of12 tablet_portrait_only' style={{height: '33vw'}} />
@@ -155,7 +155,7 @@ export class New extends React.PureComponent<Props, State> {
 
               <div className='col col--12of12'>
                 <a id='pizza' className='a--anchor' />
-                <p className='header_big text_right_on_tablet_portrait'><P r='index' k='pizza_1' /></p>
+                <p className='header_big'><P r='index' k='pizza_1' /></p>
               </div>
               <div className='col col--4of12 col--rotate'>
                 <p className='header_small' style={{maxHeight: '45vh'}}><P r='index' k='pizza_2' /></p>

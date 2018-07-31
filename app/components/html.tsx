@@ -13,19 +13,22 @@ interface Props {
       [key:string]: any
     }
   },
-  response?: any
+  response?: any,
+  editable?: boolean
 }
 
 export const HTML: React.SFC<Props> = (props) => {
   return <AppContext.Provider value={{
     pieces: props.pieces,
     response: props.response,
-    user: undefined
+    user: undefined,
+    editable: props.editable
   }}>
     <html>
     <head>
       <meta charSet='utf-8' />
       <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+      <meta name='google-site-verification' content='TbdTeN-7nA3C1J4AMdJjddIPtXTAokjeT5wRMqwtxeA' />
       <title><P r='index' k='title' /></title>
       <link rel='shortcut icon' type='image/png' href='https://montrealuploads.imgix.net/ricolta/favicon.png' />
       <link rel='stylesheet' type='text/css' href='/dist/app.css' />

@@ -8,9 +8,11 @@ export default class Session extends Model {
 
   public save(data: any) {
     return super.save(data).then(session => {
-      cookies.set('Session-Id', this.attributes._id)
-      cookies.set('Session-Secret', this.attributes.secret)
-      cookies.set('User-Id', this.attributes.user_id)
+      if (!this.error) {
+        cookies.set('Session-Id', this.attributes._id)
+        cookies.set('Session-Secret', this.attributes.secret)
+        cookies.set('User-Id', this.attributes.user_id)
+      }
 
       return session
     })

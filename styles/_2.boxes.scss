@@ -83,3 +83,11 @@
         // top: $gutter*6;
       }
     }
+
+    .box__text {
+      pointer-events: none;
+
+      .grid > .col {
+        pointer-events: auto;
+      }
+    }

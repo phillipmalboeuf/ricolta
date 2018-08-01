@@ -3,5 +3,10 @@
   "MONGO_DB": "database",
   "ORIGIN": "http://localhost:8089,http://localhost:8080",
   "SERVER_PORT": "8089",
-  "DEFAULT_LOCALE": "fr_CA"
+  "DEFAULT_LOCALE": "fr_CA",
+  "AWS_ACCESS_KEY": "",
+  "AWS_SECRET_KEY": "",
+  "AWS_S3_BUCKET": "",
+  "AWS_S3_FOLDER": "ricolta",
+  "AWS_S3_REGION": "ca-central-1"
 }

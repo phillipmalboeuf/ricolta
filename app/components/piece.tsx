@@ -5,6 +5,7 @@ import * as React from 'react'
 import { context } from '../context'
 import Piece from '../models/piece'
 import { Button } from './button'
+import { upload } from '../utilities/upload'
 
 
 
@@ -86,9 +87,28 @@ class _A extends _P {
 
 class _Img extends _P {
 
+  protected input(e: React.FormEvent<HTMLInputElement>) {
+    let file = e.currentTarget.files[0]
+    if (file && file.type.match('image.*')) {
+      upload(file).then(response => {
+        this.setState({
+          value: `/${response.path}`
+        })
+      })
+    }
+  }
+
   public render() {
-    return <picture>
-      <img src={`https://montrealuploads.imgix.net${this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress`} className={this.props.className} />
+    return this.props.context.editable
+      ? <>
+        <img src={`https://montrealuploads.imgix.net${this.state.value || this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress`} className={this.props.className} />
+        <input type='file' onChange={e => this.input(e)} />
+      </>
+    : <picture>
+      <source srcSet={`https://montrealuploads.imgix.net${this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress&w=600`} media='(max-width: 600px)' />
+      <source srcSet={`https://montrealuploads.imgix.net${this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress&w=900`} media='(max-width: 900px)' />
+      <source srcSet={`https://montrealuploads.imgix.net${this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress&w=1200`} media='(max-width: 1200px)' />
+      <img src={`https://montrealuploads.imgix.net${this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress&w=1500`} className={this.props.className} />
     </picture>
   }
 }

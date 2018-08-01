@@ -5,6 +5,7 @@ import compression from 'compression'
 import morgan from 'morgan'
 import * as bodyparser from 'body-parser'
 import cookieparser from 'cookie-parser'
+import fileupload from 'express-fileupload'
 import createLocaleMiddleware from 'express-locale'
 
 
@@ -20,6 +21,7 @@ import { sendError } from './helpers/errors'
 import User from './models/user'
 import Session from './models/session'
 import Piece from './models/piece'
+import Upload from './utilities/upload'
 
 
 
@@ -29,6 +31,7 @@ export const server: Server = express()
 server.use(cors({origin: CONF('ORIGIN').split(','), credentials: true}))
 server.use(bodyparser.json())
 server.use(cookieparser())
+server.use(fileupload())
 server.use(compression())
 server.use(createLocaleMiddleware({
   'priority': ['cookie', 'accept-language', 'default'],
@@ -40,7 +43,8 @@ server.use('/dist', express.static(`${__dirname}`))
 const models = [
   User,
   Session,
-  Piece
+  Piece,
+  Upload
 ]
 
 models.forEach(model => {

@@ -44,9 +44,10 @@ export class Login extends React.Component<Props, State> {
 
   public render() {
     return <div className='boxes'>
-      <div className='box box--full'>
+      <div className='box box--full grid--center'>
         <Form id='login' model={this.state.session} onSubmit={(e, state)=> this.fetchUser()} cta='Login'>
-          <Link className='underline' to={`/`}>Back</Link>
+          <Link className='underline' to={`/`}>Back to home</Link>
+          <h1 className='header_big'>Login</h1>
           <Input label='Email Address' name='email' />
           <Input label='Password' type='password' name='password' />
         </Form>

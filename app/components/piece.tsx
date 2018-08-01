@@ -110,6 +110,7 @@ class _Img extends _P {
         <img src={`https://montrealuploads.imgix.net${this.state.value || this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress`} className={this.props.className} onLoad={e => this.setState({loading: false})} />
         <input className='flat_bottom' type='file' onChange={e => this.input(e)} />
         <Loading start={this.state.loading} finish={!this.state.loading && this.state.value} />
+        <Button sup disabled={this.state.value === undefined} label='Save' onClick={e => this.save(e)} />
       </>
     : <picture>
       <source srcSet={`https://montrealuploads.imgix.net${this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress&w=600`} media='(max-width: 600px)' />

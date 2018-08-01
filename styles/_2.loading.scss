@@ -1,0 +1,28 @@
+// #LOADING
+
+.loading {
+  height: 3px;
+  width: 0;
+  background: $gold;
+  opacity: 1;
+
+  transition: width 20s ease-in;
+
+  &.loading--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+
+  &.loading--start {
+    width: 100%;
+  }
+
+  &.loading--finish {
+    width: 100%;
+    opacity: 0;
+    
+    transition: opacity $slow;
+  }
+}

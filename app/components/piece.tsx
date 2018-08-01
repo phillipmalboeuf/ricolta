@@ -6,6 +6,7 @@ import { context } from '../context'
 import Piece from '../models/piece'
 import { Button } from './button'
 import { upload } from '../utilities/upload'
+import { Loading } from './loading'
 
 
 
@@ -24,7 +25,8 @@ interface Props {
 }
 
 interface State {
-  value?: any
+  value?: any,
+  loading?: boolean
 }
 
 
@@ -88,6 +90,10 @@ class _A extends _P {
 class _Img extends _P {
 
   protected input(e: React.FormEvent<HTMLInputElement>) {
+    this.setState({
+      loading: true
+    })
+
     let file = e.currentTarget.files[0]
     if (file && file.type.match('image.*')) {
       upload(file).then(response => {
@@ -101,8 +107,9 @@ class _Img extends _P {
   public render() {
     return this.props.context.editable
       ? <>
-        <img src={`https://montrealuploads.imgix.net${this.state.value || this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress`} className={this.props.className} />
-        <input type='file' onChange={e => this.input(e)} />
+        <img src={`https://montrealuploads.imgix.net${this.state.value || this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress`} className={this.props.className} onLoad={e => this.setState({loading: false})} />
+        <input className='flat_bottom' type='file' onChange={e => this.input(e)} />
+        <Loading start={this.state.loading} finish={!this.state.loading && this.state.value} />
       </>
     : <picture>
       <source srcSet={`https://montrealuploads.imgix.net${this.props.context.pieces[this.props.r][this.props.k]}?auto=format,compress&w=600`} media='(max-width: 600px)' />

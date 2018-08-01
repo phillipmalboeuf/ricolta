@@ -27,16 +27,16 @@ const app = (pieces, response, user, editable)=> <AppContext.Provider value={{
   </AppContext.Provider>
 
 
-let user = new User({_id: cookies.get('User-Id')})
+window.user = new User({_id: cookies.get('User-Id')})
 
 if (process.env.NODE_ENV === 'production') {
   ReactDOM.hydrate(
-    app(window.pieces, window.response, user, user._id ? true : false),
+    app(window.pieces, window.response, window.user, window.user._id ? true : false),
     document.getElementById('app'))
 } else {
   Promise.all([
     Piece.list(),
-    user._id ? user.fetch() : Promise.resolve(user)
+    window.user._id ? window.user.fetch() : Promise.resolve(window.user)
   ]).then(([pieces, user])=>
     ReactDOM.render(
       app(pieces, undefined, user, user._id ? true : false),

@@ -66,7 +66,8 @@ export class Menu extends React.Component<Props, State> {
 
   public render() {
     const nav = <>
-      <A r='menu' k='email_link' blank className='header_big'><P r='menu' k='contact' /></A>
+      {/* <A r='menu' k='email_link' blank className='header_big'><P r='menu' k='contact' /></A> */}
+      <a href='#contact' onClick={(e)=> this.linkclick(e)} className='header_big'><P r='menu' k='contact' /></a>
       <a href='#benvenuto' onClick={(e)=> this.linkclick(e)} className='header_big'><P r='menu' k='benvenuto' /></a>
       <a href='#pizza' onClick={(e)=> this.linkclick(e)} className='header_big'><P r='menu' k='pizza' /></a>
       <a href='#local' onClick={(e)=> this.linkclick(e)} className='header_big'><P r='menu' k='local' /></a>

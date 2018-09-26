@@ -52,6 +52,7 @@ export class New extends React.PureComponent<Props, State> {
 
   public render() {
     return <div className='boxes'>
+      <a id='contact' className='a--anchor' />
       <div className='box box--full'>
         <div className='grid box__photos'>
           <div className='col col--6of12 col--tablet_portrait--4of12 col--tablet_portrait--first' />
@@ -106,7 +107,7 @@ export class New extends React.PureComponent<Props, State> {
         <div className='box__border' />
 
         <div className='grid grid--center box__text' style={{zIndex: 2}}>
-          <a id='benvenuto' className='a--anchor' />
+          
           <div className='col col--6of12 col--tablet_portrait--8of12 col--phone--10of12'>
             <div className='grid grid--guttered'>
               <div className='col col--12of12'>
@@ -134,7 +135,9 @@ export class New extends React.PureComponent<Props, State> {
 
               <div className='col col--spacer' />
 
+              
               <div className='col col--6of12'>
+                <a id='benvenuto' className='a--anchor' />
                 <h3 className='info_big'><P r='index' k='city' /></h3>
               </div>
               <div className='col col--6of12 text_right'>
